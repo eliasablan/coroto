@@ -34,7 +34,7 @@ export default async function Header() {
           {menu.length &&
             menu.map((item: Menu) => (
               <li
-                className="hover:underline transition-all duration-300 ease-out"
+                className="hover:underline font-medium transition-all duration-300 ease-out"
                 key={item.title}
               >
                 <Link href={item.path}>{item.title}</Link>
