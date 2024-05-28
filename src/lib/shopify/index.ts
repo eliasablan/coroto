@@ -54,7 +54,6 @@ import {
   ShopifyUpdateCartOperation,
 } from "./types";
 
-console.log({ domain: process.env.SHOPIFY_STORE_DOMAIN });
 const domain = process.env.SHOPIFY_STORE_DOMAIN
   ? ensureStartsWith(process.env.SHOPIFY_STORE_DOMAIN, "https://")
   : "";
