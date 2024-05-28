@@ -94,6 +94,13 @@ body::-webkit-scrollbar-thumb {
 /* Adjust scrollbar width for medium screens */
 @media screen and (min-width: 768px) and (max-width: 1280px) {
   body::-webkit-scrollbar {
-    width: 9px; /* Screens above 1280px */
+    width: 9px; /* Screens between 768px and 1280px */
+  }
+}
+
+/* Adjust scrollbar width for large screens */
+@media screen and (min-width: 1280px) {
+  body::-webkit-scrollbar {
+    width: 11px; /* Screens above 1280px */
   }
 }
