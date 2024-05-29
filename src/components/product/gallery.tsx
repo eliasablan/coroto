@@ -13,17 +13,17 @@ export function Gallery({
 }: {
   images: { src: string; altText: string }[];
 }) {
-  const pathname = usePathname();
+  const pathname = usePathname()!;
   const searchParams = useSearchParams();
-  const imageSearchParam = searchParams.get("image");
+  const imageSearchParam = searchParams?.get("image");
   const imageIndex = imageSearchParam ? parseInt(imageSearchParam) : 0;
 
-  const nextSearchParams = new URLSearchParams(searchParams.toString());
+  const nextSearchParams = new URLSearchParams(searchParams?.toString());
   const nextImageIndex = imageIndex + 1 < images.length ? imageIndex + 1 : 0;
   nextSearchParams.set("image", nextImageIndex.toString());
   const nextUrl = createUrl(pathname, nextSearchParams);
 
-  const previousSearchParams = new URLSearchParams(searchParams.toString());
+  const previousSearchParams = new URLSearchParams(searchParams?.toString());
   const previousImageIndex =
     imageIndex === 0 ? images.length - 1 : imageIndex - 1;
   previousSearchParams.set("image", previousImageIndex.toString());
@@ -78,7 +78,7 @@ export function Gallery({
           {images.map((image, index) => {
             const isActive = index === imageIndex;
             const imageSearchParams = new URLSearchParams(
-              searchParams.toString()
+              searchParams?.toString()
             );
 
             imageSearchParams.set("image", index.toString());

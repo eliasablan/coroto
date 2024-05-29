@@ -19,7 +19,7 @@ export function VariantSelector({
   variants: ProductVariant[];
 }) {
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname()!;
   const searchParams = useSearchParams();
   const hasNoOptionsOrJustOneOption =
     !options.length ||
@@ -51,7 +51,7 @@ export function VariantSelector({
 
           // Base option params on current params so we can preserve any other param state in the url.
           const optionSearchParams = new URLSearchParams(
-            searchParams.toString()
+            searchParams?.toString()
           );
 
           // Update the option params using the current option to reflect how the url *would* change,
@@ -84,7 +84,7 @@ export function VariantSelector({
           );
 
           // The option is active if it's in the url params.
-          const isActive = searchParams.get(optionNameLowerCase) === value;
+          const isActive = searchParams?.get(optionNameLowerCase) === value;
 
           return (
             <button
