@@ -71,9 +71,7 @@ export async function shopifyFetch<T>({
   tags,
   variables,
 }: {
-  // eslint-disable-next-line
   cache?: RequestCache;
-  // eslint-disable-next-line
   headers?: HeadersInit;
   query: string;
   tags?: string[];
@@ -149,7 +147,7 @@ const reshapeCollection = (
 
   return {
     ...collection,
-    path: `/collections/${collection.handle}`,
+    path: `/search/${collection.handle}`,
   };
 };
 
@@ -323,6 +321,7 @@ export async function getCollectionProducts({
   });
 
   if (!res.body.data.collection) {
+    console.log(`No collection found for \`${collection}\``);
     return [];
   }
 
@@ -346,7 +345,7 @@ export async function getCollections(): Promise<Collection[]> {
         title: "All",
         description: "All products",
       },
-      path: "/collections",
+      path: "/search",
       updatedAt: new Date().toISOString(),
     },
     // Filter out the `hidden` collections.
@@ -373,7 +372,7 @@ export async function getMenu(handle: string): Promise<Menu[]> {
       title: item.title,
       path: item.url
         .replace(domain, "")
-        // .replace('/collections', '/search')
+        .replace("/collections", "/search")
         .replace("/pages", ""),
     })) || []
   );
@@ -382,6 +381,7 @@ export async function getMenu(handle: string): Promise<Menu[]> {
 export async function getPage(handle: string): Promise<Page> {
   const res = await shopifyFetch<ShopifyPageOperation>({
     query: getPageQuery,
+    cache: "no-store",
     variables: { handle },
   });
 
@@ -391,6 +391,7 @@ export async function getPage(handle: string): Promise<Page> {
 export async function getPages(): Promise<Page[]> {
   const res = await shopifyFetch<ShopifyPagesOperation>({
     query: getPagesQuery,
+    cache: "no-store",
   });
 
   return removeEdgesAndNodes(res.body.data.pages);
@@ -481,9 +482,5 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
     revalidateTag(TAGS.products);
   }
 
-  return NextResponse.json({
-    status: 200,
-    revalidated: true,
-    now: Date.now(),
-  });
+  return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });
 }

@@ -1,7 +1,19 @@
-export default function Home() {
+import { Carousel } from "@/components/carousel";
+import { ThreeItemGrid } from "@/components/grid/three-items";
+
+export const metadata = {
+  description:
+    "High-performance ecommerce store built with Next.js, Vercel, and Shopify.",
+  openGraph: {
+    type: "website",
+  },
+};
+
+export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Hola
-    </main>
+    <div className="container">
+      <ThreeItemGrid />
+      <Carousel />
+    </div>
   );
 }

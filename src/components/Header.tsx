@@ -19,7 +19,7 @@ export default async function Header() {
   }
 
   return (
-    <div className="mx-auto m-8 flex container items-center justify-between gap-4 px-6 md:gap-0 md:gap-y-12 xl:px-0">
+    <div className="mx-auto m-8 flex container items-center justify-between gap-4 px-6 md:gap-0 md:gap-y-12">
       <div className="flex items-center md:hidden">
         <MobileMenu menu={menu} />
       </div>
@@ -34,7 +34,7 @@ export default async function Header() {
           {menu.length &&
             menu.map((item: Menu) => (
               <li
-                className="hover:underline font-medium transition-all duration-300 ease-out"
+                className="hover:underline underline-offset-4 font-medium transition-all duration-300 ease-out text-sm"
                 key={item.title}
               >
                 <Link href={item.path}>{item.title}</Link>
