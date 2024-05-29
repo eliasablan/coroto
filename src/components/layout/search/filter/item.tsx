@@ -1,13 +1,14 @@
 "use client";
 
+import React from "react";
 import clsx from "clsx";
-import type { SortFilterItem } from "@/lib/constants";
+import type { SortFilterItem as SortFilterItemType } from "@/lib/constants";
 import { createUrl } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import type { ListItem, PathFilterItem } from ".";
+import type { ListItem, PathFilterItem as PathFilterItemType } from ".";
 
-function PathFilterItem({ item }: { item: PathFilterItem }) {
+function PathFilterItem({ item }: { item: PathFilterItemType }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const active = pathname === item.path;
@@ -34,7 +35,7 @@ function PathFilterItem({ item }: { item: PathFilterItem }) {
   );
 }
 
-function SortFilterItem({ item }: { item: SortFilterItem }) {
+function SortFilterItem({ item }: { item: SortFilterItemType }) {
   const pathname = usePathname()!;
   const searchParams = useSearchParams();
   const active = searchParams?.get("sort") === item.slug;

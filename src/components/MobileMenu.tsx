@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import {
   Sheet,
   SheetContent,
@@ -14,7 +13,6 @@ import { GrMenu } from "react-icons/gr";
 
 export default function MobileMenu({
   menu,
-  className,
 }: {
   menu?: Menu[];
   className?: string;

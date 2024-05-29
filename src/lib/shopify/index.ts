@@ -71,7 +71,9 @@ export async function shopifyFetch<T>({
   tags,
   variables,
 }: {
+  // eslint-disable-next-line
   cache?: RequestCache;
+  // eslint-disable-next-line
   headers?: HeadersInit;
   query: string;
   tags?: string[];
