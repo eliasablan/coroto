@@ -1,18 +1,16 @@
-import Grid from "@/components/grid";
-
 export default function Loading() {
   return (
-    <Grid className="grid-cols-2 lg:grid-cols-3">
+    <ul className="grid grid-flow-row gap-4 grid-cols-2 lg:grid-cols-3">
       {Array(12)
         .fill(0)
         .map((_, index) => {
           return (
-            <Grid.Item
+            <li
               key={index}
-              className="animate-pulse bg-neutral-100 dark:bg-neutral-900"
+              className="aspect-square transition-opacity animate-pulse bg-muted"
             />
           );
         })}
-    </Grid>
+    </ul>
   );
 }
