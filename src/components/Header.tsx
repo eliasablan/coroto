@@ -19,7 +19,7 @@ export default async function Header() {
   }
 
   return (
-    <div className="mx-auto m-8 flex container items-center justify-between gap-4 px-6 md:gap-0 md:gap-y-12">
+    <div className="my-8 flex container items-center justify-between gap-4 md:gap-0 md:gap-y-12">
       <div className="flex items-center md:hidden">
         <MobileMenu menu={menu} />
       </div>
@@ -30,11 +30,11 @@ export default async function Header() {
         <LuBoxes size={35} />
       </Link>
       <nav className="hidden md:block">
-        <ul className="flex items-center gap-12">
+        <ul className="flex items-center gap-8">
           {menu.length &&
             menu.map((item: Menu) => (
               <li
-                className="hover:underline underline-offset-4 font-medium transition-all duration-300 ease-out text-sm"
+                className="hover:underline underline-offset-4 font-medium text-sm"
                 key={item.title}
               >
                 <Link href={item.path}>{item.title}</Link>

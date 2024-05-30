@@ -12,42 +12,39 @@ export default async function Footer() {
   // const settings = await getSettings()
 
   return (
-    <footer className="mx-auto mb-2 max-w-7xl px-6 xl:px-0">
-      <div className="mx-auto max-w-7xl px-0 pt-6">
-        <div className="flex flex-col items-center text-center">
-          <Link
-            href="/"
-            className="hover:text-accent transition-all duration-300 ease-out"
-          >
-            <LuBoxes size={35} />
-          </Link>
+    <footer className="container my-8">
+      <div className="flex flex-col items-center text-center">
+        <Link
+          href="/"
+          className="hover:text-accent transition-all duration-300 ease-out"
+        >
+          <LuBoxes size={35} />
+        </Link>
 
-          <div className="-mx-4 my-6 flex flex-col flex-wrap justify-between sm:my-2 md:flex-row">
-            <ul>
-              {menu.length &&
-                menu.map((item) => (
-                  <li key={item.title}>
-                    <Link
-                      href={item.path}
-                      className="mx-2 p-2 text-sm leading-10 transition-all duration-300 ease-in hover:opacity-70"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              <li>
-                <ModeToggle />
+        <ul className="my-8 gap-x-8 flex flex-col flex-wrap justify-between sm:my-2 md:flex-row">
+          {menu.length &&
+            menu.map((item) => (
+              <li key={item.title}>
+                <Link
+                  href={item.path}
+                  className="p-2 font-medium text-sm leading-10 hover:underline underline-offset-4"
+                >
+                  {item.title}
+                </Link>
               </li>
-            </ul>
-          </div>
-        </div>
+            ))}
+          <li>
+            <ModeToggle />
+          </li>
+        </ul>
+      </div>
 
-        <hr className="border-indian-red" />
+      <hr className="border-px" />
 
-        <div className="my-8 flex flex-col items-center sm:my-2 sm:flex-row sm:justify-between">
-          {/* <p className="py-2 text-sm">{settings?.footer}</p> */}
+      <div className="my-8 flex flex-col items-center sm:my-2 sm:flex-row sm:justify-between">
+        {/* <p className="py-2 text-sm">{settings?.footer}</p> */}
 
-          {/* <div className="flex gap-x-4 py-2">
+        {/* <div className="flex gap-x-4 py-2">
             {settings?.socials?.map((social) => (
               <Link
                 key={social.rrss?.url}
@@ -61,7 +58,6 @@ export default async function Footer() {
               </Link>
             ))}
           </div> */}
-        </div>
       </div>
     </footer>
   );
