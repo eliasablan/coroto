@@ -2,10 +2,14 @@ import React from 'react'
 import { Product } from '@/lib/shopify/types'
 import ProductCard from '@/components/ProductCard'
 
-export default function CatalogGrid({products }: {products: Product[]}) {
+export default function CatalogGrid({
+  products,
+}: {
+  products: Product[]
+}) {
   if (products.length === 0) return null
   return (
-    <ul className="aspect-square grid-cols-1 transition-opacity sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid aspect-square grid-flow-row grid-cols-1 gap-4 transition-opacity sm:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => (
         <li
           key={product.handle}
