@@ -22,7 +22,7 @@ export default async function Home() {
     <div className="container">
       <h1 className="text-4xl font-bold my-4">Welcome to Coroto Store 👋</h1>
       <ThreeItemsGrid products={gridItems} />
-      <h2 className="text-2xl font-semibold my-4">Productos destacados</h2>
+      <h2 className="text-2xl font-semibold my-4">Featured corotos</h2>
       <ProductsCarousel products={carouselProducts} />
     </div>
   );
