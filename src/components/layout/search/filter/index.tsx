@@ -25,7 +25,7 @@ export default function FilterList({
 }) {
   return (
     <>
-      <nav className="sticky top-[99px]">
+      <nav className="sticky top-[83px]">
         {title ? (
           <h3 className="hidden text-xs text-muted-foreground md:block">
             {title}

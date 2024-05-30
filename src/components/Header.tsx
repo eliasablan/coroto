@@ -19,7 +19,7 @@ export default async function Header() {
   }
 
   return (
-    <div className="container sticky top-0 z-50 flex items-center justify-between gap-4 bg-background py-8 md:gap-0 md:gap-y-12">
+    <div className="container sticky -top-4 z-50 flex items-center justify-between gap-4 bg-background pb-4 pt-8 md:gap-0 md:gap-y-12">
       <div className="flex items-center md:hidden">
         <MobileMenu menu={menu} />
       </div>
