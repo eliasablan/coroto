@@ -19,7 +19,7 @@ export default async function Header() {
   }
 
   return (
-    <div className="my-8 flex container items-center justify-between gap-4 md:gap-0 md:gap-y-12">
+    <div className="py-8 flex container items-center justify-between gap-4 md:gap-0 md:gap-y-12 sticky top-0 z-50 bg-background">
       <div className="flex items-center md:hidden">
         <MobileMenu menu={menu} />
       </div>
