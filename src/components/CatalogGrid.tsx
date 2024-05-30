@@ -16,6 +16,7 @@ export default function CatalogGrid({
           className="aspect-square animate-fadeIn transition-opacity"
         >
           <ProductCard
+            tooltip={true}
             className="inline-block"
             product={product}
             src={product.featuredImage?.url}

@@ -4,14 +4,23 @@ import Link from 'next/link'
 import { Product } from '@/lib/shopify/types'
 import { cn } from '@/lib/utils'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
+import {
+  Tooltip,
+  TooltipProvider,
+  TooltipContent,
+  TooltipTrigger,
+} from './ui/tooltip'
 
 export default function ProductCard({
   product,
+  tooltip = false,
   className,
   ...props
-}: { product: Product; className?: string } & React.ComponentProps<
-  typeof Image
->) {
+}: {
+  product: Product
+  tooltip?: boolean
+  className?: string
+} & React.ComponentProps<typeof Image>) {
   return (
     <Link
       href={`/product/${product.handle}`}
@@ -28,10 +37,25 @@ export default function ProductCard({
             />
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between gap-x-1 p-4">
-          <h3 className="line-clamp-1">{product.title}</h3>
-          <p className="whitespace-nowrap rounded-full bg-primary-foreground p-2 font-bold text-primary">
-            {product.priceRange.maxVariantPrice.currencyCode}{' '}
+        <CardFooter className="flex justify-between gap-x-1 p-4 pt-0">
+          {tooltip ? (
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <h3 className="line-clamp-1">{product.title}</h3>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{product.title}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ) : (
+            <h3 className="line-clamp-1">{product.title}</h3>
+          )}
+          <p className="whitespace-nowrap rounded-full border bg-primary-foreground p-2 font-bold text-primary">
+            {product.priceRange.maxVariantPrice.currencyCode
+              ? '$'
+              : product.priceRange.maxVariantPrice.currencyCode}{' '}
             {product.priceRange.maxVariantPrice.amount}
           </p>
         </CardFooter>
