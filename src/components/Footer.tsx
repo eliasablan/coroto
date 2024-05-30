@@ -34,7 +34,7 @@ export default async function Footer() {
               </li>
             ))}
           <li>
-            <ModeToggle />
+            <ModeToggle className="rounded-full" />
           </li>
         </ul>
       </div>
