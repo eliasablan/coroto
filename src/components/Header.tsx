@@ -1,31 +1,31 @@
-import React from "react";
-import Link from "next/link";
-import { getMenu } from "@/lib/shopify";
-import { Menu } from "@/lib/shopify/types";
-import MobileMenu from "./MobileMenu";
-import Cart from "./MobileCart";
-import { GrCodeSandbox } from "react-icons/gr";
+import React from 'react'
+import Link from 'next/link'
+import { getMenu } from '@/lib/shopify'
+import { Menu } from '@/lib/shopify/types'
+import MobileMenu from './MobileMenu'
+import Cart from './MobileCart'
+import { GrCodeSandbox } from 'react-icons/gr'
 
-import { cookies } from "next/headers";
-import { getCart } from "@/lib/shopify";
+import { cookies } from 'next/headers'
+import { getCart } from '@/lib/shopify'
 
 export default async function Header() {
-  const menu = await getMenu("main-menu");
-  const cartId = cookies().get("cartId")?.value;
-  let cart;
+  const menu = await getMenu('main-menu')
+  const cartId = cookies().get('cartId')?.value
+  let cart
 
   if (cartId) {
-    cart = await getCart(cartId);
+    cart = await getCart(cartId)
   }
 
   return (
-    <div className="py-8 flex container items-center justify-between gap-4 md:gap-0 md:gap-y-12 sticky top-0 z-50 bg-background">
+    <div className="container sticky top-0 z-50 flex items-center justify-between gap-4 bg-background py-8 md:gap-0 md:gap-y-12">
       <div className="flex items-center md:hidden">
         <MobileMenu menu={menu} />
       </div>
       <Link
         href="/"
-        className="hover:text-accent transition-all duration-300 ease-out"
+        className="transition-all duration-300 ease-out hover:text-accent"
       >
         <GrCodeSandbox size={35} />
       </Link>
@@ -34,7 +34,7 @@ export default async function Header() {
           {menu.length &&
             menu.map((item: Menu) => (
               <li
-                className="hover:underline underline-offset-4 font-medium text-sm"
+                className="text-sm font-medium underline-offset-4 hover:underline"
                 key={item.title}
               >
                 <Link href={item.path}>{item.title}</Link>
@@ -47,5 +47,5 @@ export default async function Header() {
       </nav>
       <Cart cart={cart} className="block md:hidden" />
     </div>
-  );
+  )
 }

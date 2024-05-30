@@ -1,36 +1,39 @@
-"use client";
+'use client'
 
 // import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
-import { GrCaretPrevious, GrCaretNext } from "react-icons/gr";
-import { GridTileImage } from "@/components/grid/tile";
-import { createUrl } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { GrCaretPrevious, GrCaretNext } from 'react-icons/gr'
+import { GridTileImage } from '@/components/grid/tile'
+import { createUrl } from '@/lib/utils'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 export function Gallery({
   images,
 }: {
-  images: { src: string; altText: string }[];
+  images: { src: string; altText: string }[]
 }) {
-  const pathname = usePathname()!;
-  const searchParams = useSearchParams();
-  const imageSearchParam = searchParams?.get("image");
-  const imageIndex = imageSearchParam ? parseInt(imageSearchParam) : 0;
+  const pathname = usePathname()!
+  const searchParams = useSearchParams()
+  const imageSearchParam = searchParams?.get('image')
+  const imageIndex = imageSearchParam ? parseInt(imageSearchParam) : 0
 
-  const nextSearchParams = new URLSearchParams(searchParams?.toString());
-  const nextImageIndex = imageIndex + 1 < images.length ? imageIndex + 1 : 0;
-  nextSearchParams.set("image", nextImageIndex.toString());
-  const nextUrl = createUrl(pathname, nextSearchParams);
+  const nextSearchParams = new URLSearchParams(searchParams?.toString())
+  const nextImageIndex =
+    imageIndex + 1 < images.length ? imageIndex + 1 : 0
+  nextSearchParams.set('image', nextImageIndex.toString())
+  const nextUrl = createUrl(pathname, nextSearchParams)
 
-  const previousSearchParams = new URLSearchParams(searchParams?.toString());
+  const previousSearchParams = new URLSearchParams(
+    searchParams?.toString()
+  )
   const previousImageIndex =
-    imageIndex === 0 ? images.length - 1 : imageIndex - 1;
-  previousSearchParams.set("image", previousImageIndex.toString());
-  const previousUrl = createUrl(pathname, previousSearchParams);
+    imageIndex === 0 ? images.length - 1 : imageIndex - 1
+  previousSearchParams.set('image', previousImageIndex.toString())
+  const previousUrl = createUrl(pathname, previousSearchParams)
 
   const buttonClassName =
-    "h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center";
+    'h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center'
 
   return (
     <>
@@ -76,12 +79,12 @@ export function Gallery({
       {images.length > 1 ? (
         <ul className="my-12 flex items-center justify-center gap-2 overflow-auto py-1 lg:mb-0">
           {images.map((image, index) => {
-            const isActive = index === imageIndex;
+            const isActive = index === imageIndex
             const imageSearchParams = new URLSearchParams(
               searchParams?.toString()
-            );
+            )
 
-            imageSearchParams.set("image", index.toString());
+            imageSearchParams.set('image', index.toString())
 
             return (
               <li key={image.src} className="h-20 w-20">
@@ -100,10 +103,10 @@ export function Gallery({
                   />
                 </Link>
               </li>
-            );
+            )
           })}
         </ul>
       ) : null}
     </>
-  );
+  )
 }

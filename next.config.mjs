@@ -3,12 +3,12 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "cdn.shopify.com",
+        protocol: 'https',
+        hostname: 'cdn.shopify.com',
       },
     ],
   },
-  output: "standalone",
-};
+  output: 'standalone',
+}
 
-export default nextConfig;
+export default nextConfig

@@ -1,15 +1,15 @@
-import { ImageResponse } from "next/og";
-import { GrCodeSandbox } from "react-icons/gr";
+import { ImageResponse } from 'next/og'
+import { GrCodeSandbox } from 'react-icons/gr'
 
 // Route segment config
-export const runtime = "edge";
+export const runtime = 'edge'
 
 // Image metadata
 export const size = {
   width: 32,
   height: 32,
-};
-export const contentType = "image/png";
+}
+export const contentType = 'image/png'
 
 // Image generation
 export default function Icon() {
@@ -24,5 +24,5 @@ export default function Icon() {
       // config to also set the ImageResponse's width and height.
       ...size,
     }
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 import {
   Sheet,
   SheetContent,
@@ -7,20 +7,20 @@ import {
   SheetClose,
   SheetHeader,
   SheetTitle,
-} from "@/components/ui/sheet";
-import { Menu } from "@/lib/shopify/types";
-import { GrMenu } from "react-icons/gr";
+} from '@/components/ui/sheet'
+import { Menu } from '@/lib/shopify/types'
+import { GrMenu } from 'react-icons/gr'
 
 export default function MobileMenu({
   menu,
 }: {
-  menu?: Menu[];
-  className?: string;
+  menu?: Menu[]
+  className?: string
 }) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button className="relative flex items-center hover:text-accent transition-all duration-300 ease-out">
+        <button className="relative flex items-center transition-all duration-300 ease-out hover:text-accent">
           <GrMenu />
         </button>
       </SheetTrigger>
@@ -40,5 +40,5 @@ export default function MobileMenu({
         </ul>
       </SheetContent>
     </Sheet>
-  );
+  )
 }

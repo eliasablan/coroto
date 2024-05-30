@@ -1,38 +1,38 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ShoppingCartIcon } from "lucide-react";
-import type { Cart } from "@/lib/shopify/types";
-import { DEFAULT_OPTION } from "@/lib/constants";
-import { createUrl } from "@/lib/utils";
+'use client'
+import React, { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ShoppingCartIcon } from 'lucide-react'
+import type { Cart } from '@/lib/shopify/types'
+import { DEFAULT_OPTION } from '@/lib/constants'
+import { createUrl } from '@/lib/utils'
 
-import Price from "./price";
-import { DeleteItemButton } from "./cart/delete-item-button";
-import { EditItemQuantityButton } from "./cart/edit-item-quantity-button";
+import Price from './price'
+import { DeleteItemButton } from './cart/delete-item-button'
+import { EditItemQuantityButton } from './cart/edit-item-quantity-button'
 
 type MerchandiseSearchParams = {
-  [key: string]: string;
-};
+  [key: string]: string
+}
 
 export default function CartSheet({ cart }: { cart: Cart | undefined }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const quantityRef = useRef(cart?.totalQuantity);
+  const [isOpen, setIsOpen] = useState(false)
+  const quantityRef = useRef(cart?.totalQuantity)
   // const openCart = () => setIsOpen(true)
-  const closeCart = () => setIsOpen(false);
+  const closeCart = () => setIsOpen(false)
 
   useEffect(() => {
     // Open cart modal when quantity changes.
     if (cart?.totalQuantity !== quantityRef.current) {
       // But only if it's not already open (quantity also changes when editing items in cart).
       if (!isOpen) {
-        setIsOpen(true);
+        setIsOpen(true)
       }
 
       // Always update the quantity reference
-      quantityRef.current = cart?.totalQuantity;
+      quantityRef.current = cart?.totalQuantity
     }
-  }, [isOpen, cart?.totalQuantity, quantityRef]);
+  }, [isOpen, cart?.totalQuantity, quantityRef])
 
   return (
     <div>
@@ -47,18 +47,20 @@ export default function CartSheet({ cart }: { cart: Cart | undefined }) {
         <div className="flex h-full flex-col justify-between overflow-hidden p-1">
           <ul className="flex-grow overflow-auto py-4">
             {cart.lines.map((item, i) => {
-              const merchandiseSearchParams = {} as MerchandiseSearchParams;
+              const merchandiseSearchParams = {} as MerchandiseSearchParams
 
-              item.merchandise.selectedOptions.forEach(({ name, value }) => {
-                if (value !== DEFAULT_OPTION) {
-                  merchandiseSearchParams[name.toLowerCase()] = value;
+              item.merchandise.selectedOptions.forEach(
+                ({ name, value }) => {
+                  if (value !== DEFAULT_OPTION) {
+                    merchandiseSearchParams[name.toLowerCase()] = value
+                  }
                 }
-              });
+              )
 
               const merchandiseUrl = createUrl(
                 `/product/${item.merchandise.product.handle}`,
                 new URLSearchParams(merchandiseSearchParams)
-              );
+              )
 
               return (
                 <li key={i} className="flex w-full flex-col border-b">
@@ -77,8 +79,8 @@ export default function CartSheet({ cart }: { cart: Cart | undefined }) {
                           width={64}
                           height={64}
                           alt={
-                            item.merchandise.product.featuredImage.altText ||
-                            item.merchandise.product.title
+                            item.merchandise.product.featuredImage
+                              .altText || item.merchandise.product.title
                           }
                           src={item.merchandise.product.featuredImage.url}
                         />
@@ -89,7 +91,9 @@ export default function CartSheet({ cart }: { cart: Cart | undefined }) {
                           {item.merchandise.product.title}
                         </span>
                         {item.merchandise.title !== DEFAULT_OPTION ? (
-                          <p className="text-sm">{item.merchandise.title}</p>
+                          <p className="text-sm">
+                            {item.merchandise.title}
+                          </p>
                         ) : null}
                       </div>
                     </Link>
@@ -111,7 +115,7 @@ export default function CartSheet({ cart }: { cart: Cart | undefined }) {
                     </div>
                   </div>
                 </li>
-              );
+              )
             })}
           </ul>
           <div className="py-4 text-sm">
@@ -127,7 +131,7 @@ export default function CartSheet({ cart }: { cart: Cart | undefined }) {
               <p>Shipping</p>
               <p className="text-right">Calculated at checkout</p>
             </div>
-            <div className="mb-3 flex items-center justify-between border-bpb-1 pt-1">
+            <div className="border-bpb-1 mb-3 flex items-center justify-between pt-1">
               <p>Total</p>
               <Price
                 className="text-right text-base"
@@ -145,5 +149,5 @@ export default function CartSheet({ cart }: { cart: Cart | undefined }) {
         </div>
       )}
     </div>
-  );
+  )
 }

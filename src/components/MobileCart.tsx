@@ -1,19 +1,19 @@
-"use client";
-import React from "react";
-import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Cart as CartType } from "@/lib/shopify/types";
-import CartSheet from "./CartSheet";
-import { GrCart } from "react-icons/gr";
+'use client'
+import React from 'react'
+import { cn } from '@/lib/utils'
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
+import { Cart as CartType } from '@/lib/shopify/types'
+import CartSheet from './CartSheet'
+import { GrCart } from 'react-icons/gr'
 
 export default function MobileCart({
   cart,
   className,
   logoSize = 16,
 }: {
-  cart: CartType | undefined;
-  className?: string;
-  logoSize?: number;
+  cart: CartType | undefined
+  className?: string
+  logoSize?: number
 }) {
   return (
     <div className={cn(className)}>
@@ -21,8 +21,8 @@ export default function MobileCart({
         <SheetTrigger asChild>
           <button
             className={cn(
-              "relative flex items-center hover:text-accent transition-all duration-300 ease-out",
-              cart?.totalQuantity && "right-[6px]"
+              'relative flex items-center transition-all duration-300 ease-out hover:text-accent',
+              cart?.totalQuantity && 'right-[6px]'
             )}
           >
             <GrCart size={logoSize} />
@@ -38,5 +38,5 @@ export default function MobileCart({
         </SheetContent>
       </Sheet>
     </div>
-  );
+  )
 }

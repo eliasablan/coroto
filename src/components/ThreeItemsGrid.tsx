@@ -1,14 +1,14 @@
-import ProductCard from "./ProductCard";
-import { Product } from "@/lib/shopify/types";
+import ProductCard from './ProductCard'
+import { Product } from '@/lib/shopify/types'
 
 export default async function ThreeItemsGrid({
   products,
 }: {
-  products: Product[];
+  products: Product[]
 }) {
-  if (!products[0] || !products[1] || !products[2]) return null;
+  if (!products[0] || !products[1] || !products[2]) return null
 
-  const [firstProduct, secondProduct, thirdProduct] = products;
+  const [firstProduct, secondProduct, thirdProduct] = products
 
   return (
     <section className="grid gap-4 pb-4 lg:grid-cols-6 lg:grid-rows-2">
@@ -39,5 +39,5 @@ export default async function ThreeItemsGrid({
         />
       </div>
     </section>
-  );
+  )
 }

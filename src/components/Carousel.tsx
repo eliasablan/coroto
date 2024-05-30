@@ -1,26 +1,30 @@
-"use client";
+'use client'
 
-import * as React from "react";
+import * as React from 'react'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import ProductCard from "@/components/ProductCard";
-import { Product } from "@/lib/shopify/types";
+} from '@/components/ui/carousel'
+import Autoplay from 'embla-carousel-autoplay'
+import ProductCard from '@/components/ProductCard'
+import { Product } from '@/lib/shopify/types'
 
-export async function ProductsCarousel({ products }: { products: Product[] }) {
+export async function ProductsCarousel({
+  products,
+}: {
+  products: Product[]
+}) {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
-  );
+  )
 
   return (
     <Carousel
       opts={{
-        align: "start",
+        align: 'start',
         loop: true,
       }}
       plugins={[plugin.current]}
@@ -47,5 +51,5 @@ export async function ProductsCarousel({ products }: { products: Product[] }) {
       <CarouselPrevious className="left-0" />
       <CarouselNext className="right-0" />
     </Carousel>
-  );
+  )
 }

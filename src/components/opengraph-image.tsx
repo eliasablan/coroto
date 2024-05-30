@@ -1,9 +1,9 @@
-import { ImageResponse } from "next/og";
-import LogoIcon from "@/components/icons/logo";
+import { ImageResponse } from 'next/og'
+import LogoIcon from '@/components/icons/logo'
 
 export type Props = {
-  title?: string;
-};
+  title?: string
+}
 
 export default async function OpengraphImage(
   props?: Props
@@ -13,7 +13,7 @@ export default async function OpengraphImage(
       title: process.env.SITE_NAME,
     },
     ...props,
-  };
+  }
 
   return new ImageResponse(
     (
@@ -28,5 +28,5 @@ export default async function OpengraphImage(
       width: 1200,
       height: 630,
     }
-  );
+  )
 }
