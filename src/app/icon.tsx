@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { LuBoxes } from "react-icons/lu";
+import { GrCodeSandbox } from "react-icons/gr";
 
 // Route segment config
 export const runtime = "edge";
@@ -16,7 +16,7 @@ export default function Icon() {
   return new ImageResponse(
     (
       // ImageResponse JSX element
-      <LuBoxes size={32} />
+      <GrCodeSandbox size={32} />
     ),
     // ImageResponse options
     {

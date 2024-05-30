@@ -4,7 +4,7 @@ import { getMenu } from "@/lib/shopify";
 import { Menu } from "@/lib/shopify/types";
 import MobileMenu from "./MobileMenu";
 import Cart from "./MobileCart";
-import { LuBoxes } from "react-icons/lu";
+import { GrCodeSandbox } from "react-icons/gr";
 
 import { cookies } from "next/headers";
 import { getCart } from "@/lib/shopify";
@@ -27,7 +27,7 @@ export default async function Header() {
         href="/"
         className="hover:text-accent transition-all duration-300 ease-out"
       >
-        <LuBoxes size={35} />
+        <GrCodeSandbox size={35} />
       </Link>
       <nav className="hidden md:block">
         <ul className="flex items-center gap-8">

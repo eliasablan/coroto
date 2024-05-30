@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { getMenu } from "@/lib/shopify";
-import { LuBoxes } from "react-icons/lu";
+import { GrCodeSandbox } from "react-icons/gr";
 import { ModeToggle } from "./ThemeButton";
 // import { getSettings } from '@/sanity/queries'
 // import { BelenaSVG } from './BelenaLogo'
@@ -18,7 +18,7 @@ export default async function Footer() {
           href="/"
           className="hover:text-accent transition-all duration-300 ease-out"
         >
-          <LuBoxes size={35} />
+          <GrCodeSandbox size={35} />
         </Link>
 
         <ul className="my-8 gap-x-8 flex flex-col flex-wrap justify-between sm:my-2 md:flex-row">
