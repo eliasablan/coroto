@@ -5,11 +5,10 @@ import { Menu } from '@/lib/shopify/types'
 import MobileMenu from './MobileMenu'
 import Cart from './MobileCart'
 import { GrCodeSandbox } from 'react-icons/gr'
-import { Search } from 'lucide-react'
+import SearchBar from '@/components/SearchBar'
 
 import { cookies } from 'next/headers'
 import { getCart } from '@/lib/shopify'
-import { Input } from './ui/input'
 
 export default async function Header() {
   const menu = await getMenu('main-menu')
@@ -31,13 +30,8 @@ export default async function Header() {
       >
         <GrCodeSandbox size={35} />
       </Link>
-      <div className="relative hidden items-center md:flex">
-        <Search className="absolute left-2.5 h-4 w-4 text-foreground" />
-        <Input
-          type="search"
-          placeholder="Search..."
-          className="w-96 rounded-lg bg-background pl-9 placeholder:text-foreground"
-        />
+      <div className="w-96">
+        <SearchBar className="relative hidden items-center md:flex" />
       </div>
       <nav className="hidden md:block">
         <ul className="flex items-center gap-8">
