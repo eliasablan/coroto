@@ -19,7 +19,7 @@ export default async function Home() {
   })
 
   return (
-    <div className="container">
+    <div className="container py-4">
       <h1 className="my-4 text-4xl font-bold">
         Welcome to Coroto Store 👋
       </h1>

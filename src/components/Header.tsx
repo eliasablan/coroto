@@ -31,12 +31,12 @@ export default async function Header() {
       >
         <GrCodeSandbox size={35} />
       </Link>
-      <div className="relative hidden md:block">
-        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+      <div className="relative hidden items-center md:flex">
+        <Search className="absolute left-2.5 h-4 w-4 text-foreground" />
         <Input
           type="search"
           placeholder="Search..."
-          className="w-96 rounded-lg bg-background pl-8"
+          className="w-96 rounded-lg bg-background pl-9 placeholder:text-foreground"
         />
       </div>
       <nav className="hidden md:block">
