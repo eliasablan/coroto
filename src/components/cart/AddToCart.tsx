@@ -1,13 +1,16 @@
 'use client'
 
 import React from 'react'
-import { PlusIcon } from 'lucide-react'
-import { addItem } from '@/components/cart/actions'
-import LoadingDots from '@/components/loading-dots'
-import { ProductVariant } from '@/lib/shopify/types'
 import { useSearchParams } from 'next/navigation'
 import { useFormState, useFormStatus } from 'react-dom'
+import { GrEmptyCircle, GrAddCircle } from 'react-icons/gr'
+
+import { ProductVariant } from '@/lib/shopify/types'
 import { cn } from '@/lib/utils'
+
+import { addItem } from '@/components/cart/actions'
+import LoadingDots from '@/components/LoadingDots'
+import { Button } from '../ui/button'
 
 function SubmitButton({
   availableForSale,
@@ -17,54 +20,49 @@ function SubmitButton({
   selectedVariantId: string | undefined
 }) {
   const { pending } = useFormStatus()
-  const buttonClasses =
-    'relative flex w-44 items-center justify-center p-4 mt-6 mb-2 tracking-wide bg-indian-red text-white'
-  const disabledClasses = 'cursor-not-allowed opacity-60 hover:opacity-60'
 
   if (!availableForSale) {
     return (
-      <button aria-disabled className={cn(buttonClasses, disabledClasses)}>
+      <Button className="cursor-not-allowed opacity-75">
         Out Of Stock
-      </button>
+      </Button>
     )
   }
 
   if (!selectedVariantId) {
     return (
-      <button
+      <Button
+        className="w-full cursor-not-allowed opacity-75"
         aria-label="Please select an option"
         aria-disabled
-        className={cn(buttonClasses, disabledClasses)}
       >
-        <div className="absolute left-0 ml-4">
-          <PlusIcon className="h-5" />
-        </div>
-        <span className="ml-8 mr-4">Add To Cart</span>
-      </button>
+        <GrEmptyCircle />
+        <span className="ml-2">Select an option</span>
+      </Button>
     )
   }
 
   return (
-    <button
+    <Button
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault()
       }}
       aria-label="Add to cart"
       aria-disabled={pending}
-      className={cn(buttonClasses, {
-        'hover:opacity-90': true,
-        disabledClasses: pending,
-      })}
+      className={cn(
+        'w-full transition duration-200 ease-in-out hover:opacity-85',
+        pending && 'cursor-not-allowed opacity-75'
+      )}
     >
-      <div className="absolute left-0 ml-4">
-        {pending ? (
-          <LoadingDots className="mb-3 bg-white" />
-        ) : (
-          <PlusIcon className="h-5" />
-        )}
-      </div>
-      <span className="ml-8 mr-4">Add To Cart</span>
-    </button>
+      {pending ? (
+        <LoadingDots />
+      ) : (
+        <>
+          <GrAddCircle />
+          <span className="ml-2">Add To Cart</span>
+        </>
+      )}
+    </Button>
   )
 }
 

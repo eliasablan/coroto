@@ -4,7 +4,7 @@ import React from 'react'
 import { MinusIcon, PlusIcon } from 'lucide-react'
 import clsx from 'clsx'
 import { updateItemQuantity } from '@/components/cart/actions'
-import LoadingDots from '@/components/loading-dots'
+import LoadingDots from '@/components/LoadingDots'
 import type { CartItem } from '@/lib/shopify/types'
 import { useFormState, useFormStatus } from 'react-dom'
 
@@ -30,7 +30,7 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
       )}
     >
       {pending ? (
-        <LoadingDots className="bg-black" />
+        <LoadingDots />
       ) : type === 'plus' ? (
         <PlusIcon className="h-4 w-4" />
       ) : (

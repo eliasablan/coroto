@@ -4,7 +4,7 @@ import React from 'react'
 import { XIcon } from 'lucide-react'
 import clsx from 'clsx'
 import { removeItem } from '@/components/cart/actions'
-import LoadingDots from '@/components/loading-dots'
+import LoadingDots from '@/components/LoadingDots'
 import type { CartItem } from '@/lib/shopify/types'
 import { useFormState, useFormStatus } from 'react-dom'
 
@@ -27,7 +27,7 @@ function SubmitButton() {
       )}
     >
       {pending ? (
-        <LoadingDots className="bg-white" />
+        <LoadingDots />
       ) : (
         <XIcon className="hover:text-accent-3 mx-[1px] h-4 w-4 text-white" />
       )}
