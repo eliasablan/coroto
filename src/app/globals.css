@@ -76,27 +76,16 @@
 }
 
 body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 7px var(--accent);
-}
-.scrollete::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 7px var(--accent);
+  background-color: var(--accent);
 }
 
 body::-webkit-scrollbar-thumb {
-  border: 1px solid var();
-  background-color: var(--accent-foreground);
-}
-.scrollete::-webkit-scrollbar-thumb {
-  border: 1px solid var();
   background-color: var(--accent-foreground);
 }
 
 /* Adjust scrollbar width for smaller screens */
 @media screen and (max-width: 768px) {
   body::-webkit-scrollbar {
-    width: 7px; /* Screens below 768px */
-  }
-  .scrollete::-webkit-scrollbar {
     width: 7px; /* Screens below 768px */
   }
 }
@@ -106,17 +95,11 @@ body::-webkit-scrollbar-thumb {
   body::-webkit-scrollbar {
     width: 9px; /* Screens between 768px and 1280px */
   }
-  .scrollete::-webkit-scrollbar {
-    width: 9px; /* Screens between 768px and 1280px */
-  }
 }
 
 /* Adjust scrollbar width for large screens */
 @media screen and (min-width: 1280px) {
   body::-webkit-scrollbar {
-    width: 11px; /* Screens above 1280px */
-  }
-  .scrollete::-webkit-scrollbar {
     width: 11px; /* Screens above 1280px */
   }
 }
