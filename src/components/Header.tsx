@@ -5,9 +5,11 @@ import { Menu } from '@/lib/shopify/types'
 import MobileMenu from './MobileMenu'
 import Cart from './MobileCart'
 import { GrCodeSandbox } from 'react-icons/gr'
+import { Search } from 'lucide-react'
 
 import { cookies } from 'next/headers'
 import { getCart } from '@/lib/shopify'
+import { Input } from './ui/input'
 
 export default async function Header() {
   const menu = await getMenu('main-menu')
@@ -19,7 +21,7 @@ export default async function Header() {
   }
 
   return (
-    <div className="container sticky -top-4 z-50 flex items-center justify-between gap-4 bg-background pb-4 pt-8 md:gap-0 md:gap-y-12">
+    <div className="container sticky -top-4 z-50 flex items-center justify-between bg-background pb-4 pt-8 align-middle">
       <div className="flex items-center md:hidden">
         <MobileMenu menu={menu} />
       </div>
@@ -29,6 +31,14 @@ export default async function Header() {
       >
         <GrCodeSandbox size={35} />
       </Link>
+      <div className="relative hidden md:block">
+        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+        <Input
+          type="search"
+          placeholder="Search..."
+          className="w-96 rounded-lg bg-background pl-8"
+        />
+      </div>
       <nav className="hidden md:block">
         <ul className="flex items-center gap-8">
           {menu.length &&
@@ -40,7 +50,7 @@ export default async function Header() {
                 <Link href={item.path}>{item.title}</Link>
               </li>
             ))}
-          <li>
+          <li className="h-5">
             <Cart logoSize={20} cart={cart} className="mb-1.5" />
           </li>
         </ul>
