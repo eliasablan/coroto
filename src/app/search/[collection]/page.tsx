@@ -15,7 +15,7 @@ export async function generateMetadata({
   if (!collection) return notFound()
 
   return {
-    title: collection.seo?.title || collection.title,
+    title: (collection.seo?.title || collection.title) + ' on Coroto',
     description:
       collection.seo?.description ||
       collection.description ||

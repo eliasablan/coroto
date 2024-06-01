@@ -3,7 +3,7 @@ import { getProducts } from '@/lib/shopify'
 import CatalogGrid from '@/components/CatalogGrid'
 
 export const metadata = {
-  title: 'Search',
+  title: 'Search in Coroto Store',
   description: 'Search your coroto (or product) in Coroto Store.',
 }
 
