@@ -37,12 +37,12 @@ export default function ProductCard({
             />
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between gap-x-1 p-4 pt-0">
+        <CardFooter className="flex h-14 justify-between gap-x-1 p-4 pt-0">
           {tooltip ? (
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <h3 className="line-clamp-1">{product.title}</h3>
+                  <h3 className="line-clamp-2">{product.title}</h3>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>{product.title}</p>
@@ -50,7 +50,7 @@ export default function ProductCard({
               </Tooltip>
             </TooltipProvider>
           ) : (
-            <h3 className="line-clamp-1">{product.title}</h3>
+            <h3 className="line-clamp-2">{product.title}</h3>
           )}
           <p className="whitespace-nowrap rounded-full border bg-primary-foreground p-2 font-bold text-primary">
             {product.priceRange.maxVariantPrice.currencyCode
