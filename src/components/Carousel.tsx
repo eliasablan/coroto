@@ -11,11 +11,14 @@ import {
 import Autoplay from 'embla-carousel-autoplay'
 import ProductCard from '@/components/ProductCard'
 import { Product } from '@/lib/shopify/types'
+import { cn } from '@/lib/utils'
 
 export async function ProductsCarousel({
   products,
+  className,
 }: {
   products: Product[]
+  className?: String
 }) {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
@@ -30,7 +33,7 @@ export async function ProductsCarousel({
       plugins={[plugin.current]}
       onMouseOver={plugin.current.stop}
       onMouseLeave={plugin.current.play}
-      className="w-full"
+      className={cn('w-full', className)}
     >
       <CarouselContent className="-ml-1">
         {products.map((product, index) => (

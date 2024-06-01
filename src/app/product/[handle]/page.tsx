@@ -74,7 +74,7 @@ export default async function ProductPage({
       />
       <div className="container my-8">
         <div className="flex flex-col gap-4 lg:flex-row">
-          <div className="h-full w-full basis-full rounded-lg border p-4 md:basis-1/2">
+          <div className="h-full basis-full rounded-lg border p-4 md:basis-1/2">
             <Gallery
               images={product.images.map((image: ShopifyImage) => ({
                 src: image.url,
@@ -82,12 +82,12 @@ export default async function ProductPage({
               }))}
             />
           </div>
-          <div className="m-8 h-full w-full basis-full rounded-lg border p-4 md:basis-1/2">
+          <div className="h-full w-full basis-full rounded-lg border p-4 md:basis-1/2">
             <ProductDescription product={product} />
           </div>
         </div>
         <Suspense>
-          <ProductsCarousel products={relatedProducts} />
+          <ProductsCarousel products={relatedProducts} className="mt-4" />
         </Suspense>
       </div>
     </>
