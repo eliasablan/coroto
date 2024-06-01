@@ -1,4 +1,4 @@
-import OpengraphImage from '@/components/opengraph-image'
+import OpengraphImage from '@/components/OGImage'
 import { getPage } from '@/lib/shopify'
 
 export const runtime = 'edge'

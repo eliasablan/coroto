@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
-import { Gallery } from '@/components/product/Gallery'
+import { Gallery } from '@/components/Gallery'
 import { ProductDescription } from '@/components/product/ProductDescription'
 import { HIDDEN_PRODUCT_TAG } from '@/lib/constants'
 import { getProduct, getProductRecommendations } from '@/lib/shopify'
 import { Image as ShopifyImage } from '@/lib/shopify/types'
-import GridTile from '@/components/GridTile'
+import { ProductsCarousel } from '@/components/Carousel'
 
 export const runtime = 'edge'
 
@@ -20,7 +20,6 @@ export async function generateMetadata({
 
   if (!product) return notFound()
 
-  const { url, width, height, altText: alt } = product.featuredImage || {}
   const indexable = !product.tags.includes(HIDDEN_PRODUCT_TAG)
 
   return {
@@ -34,18 +33,6 @@ export async function generateMetadata({
         follow: indexable,
       },
     },
-    openGraph: url
-      ? {
-          images: [
-            {
-              url,
-              width,
-              height,
-              alt,
-            },
-          ],
-        }
-      : null,
   }
 }
 
@@ -57,6 +44,8 @@ export default async function ProductPage({
   const product = await getProduct(params.handle)
 
   if (!product) return notFound()
+
+  const relatedProducts = await getProductRecommendations(product.id)
 
   const productJsonLd = {
     '@context': 'https://schema.org',
@@ -93,37 +82,14 @@ export default async function ProductPage({
               }))}
             />
           </div>
-          <div className="h-full w-full basis-full rounded-lg border p-4 md:basis-1/2">
+          <div className="m-8 h-full w-full basis-full rounded-lg border p-4 md:basis-1/2">
             <ProductDescription product={product} />
           </div>
         </div>
-        <Suspense>{/* <RelatedProducts id={product.id} /> */}</Suspense>
+        <Suspense>
+          <ProductsCarousel products={relatedProducts} />
+        </Suspense>
       </div>
     </>
-  )
-}
-
-async function RelatedProducts({ id }: { id: string }) {
-  const relatedProducts = await getProductRecommendations(id)
-
-  if (!relatedProducts.length) return null
-
-  return (
-    <div className="py-8 md:py-12">
-      <h2 className="mb-8 text-2xl font-bold">Related Products</h2>
-      <ul className="scrollbar scrollbar-track-charcoal scrollbar-thumb-indian-red flex w-full gap-8 overflow-x-auto pb-6">
-        {relatedProducts.map((product) => (
-          <li
-            key={product.handle}
-            className="h-auto w-full flex-none min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
-          >
-            <GridTile
-              product={product}
-              className="transition duration-100 ease-in hover:opacity-70"
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
   )
 }
