@@ -30,7 +30,7 @@ export async function ProductsCarousel({
       plugins={[plugin.current]}
       onMouseOver={plugin.current.stop}
       onMouseLeave={plugin.current.play}
-      className="w-full px-2"
+      className="w-full"
     >
       <CarouselContent className="-ml-1">
         {products.map((product, index) => (
