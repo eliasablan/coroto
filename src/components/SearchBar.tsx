@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { cn, createUrl } from '@/lib/utils'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Search } from 'lucide-react'
@@ -29,14 +29,16 @@ export default function SearchBar({ className }: { className?: string }) {
     <form onSubmit={onSubmit}>
       <div className={cn('relative flex items-center', className)}>
         <Search className="absolute left-2.5 h-4 w-4 text-foreground" />
-        <Input
-          key={searchParams?.get('q')}
-          type="text"
-          name="search"
-          placeholder="Search..."
-          defaultValue={searchParams?.get('q') || ''}
-          className="w-full pl-9 placeholder:text-foreground"
-        />
+        <Suspense fallback={null}>
+          <Input
+            key={searchParams?.get('q')}
+            type="text"
+            name="search"
+            placeholder="Search..."
+            defaultValue={searchParams?.get('q') || ''}
+            className="w-full pl-9 placeholder:text-foreground"
+          />
+        </Suspense>
       </div>
     </form>
   )
