@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/sheet'
 import { Menu } from '@/lib/shopify/types'
 import { GrMenu } from 'react-icons/gr'
+import SearchBar from './SearchBar'
 
 export default function MobileMenu({
   menu,
@@ -29,9 +30,15 @@ export default function MobileMenu({
           <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
         <ul className="flex w-full flex-col gap-6 py-6">
+          <li>
+            <SearchBar />
+          </li>
           {menu?.length &&
             menu.map((item) => (
-              <li className="text-2xl" key={item.title}>
+              <li
+                className="font-mono text-destructive hover:text-primary"
+                key={item.title}
+              >
                 <SheetClose asChild>
                   <Link href={item.path}>{item.title}</Link>
                 </SheetClose>

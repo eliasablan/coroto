@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import FilterItemDropdown from './dropdown'
 import { FilterItem } from './item'
 
-export type ListItem = SortFilterItem | PathFilterItem
+export type ListItem = SortFilterItem & PathFilterItem
 export type PathFilterItem = { title: string; path: string }
 
 function FilterItemList({ list }: { list: ListItem[] }) {
@@ -25,7 +25,7 @@ export default function FilterList({
 }) {
   return (
     <>
-      <nav className="sticky top-[83px]">
+      <nav className="sticky top-[67px]">
         {title ? (
           <h3 className="hidden text-xs text-muted-foreground md:block">
             {title}
