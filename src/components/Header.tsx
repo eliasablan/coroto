@@ -5,7 +5,6 @@ import { Menu } from '@/lib/shopify/types'
 import MobileMenu from './MobileMenu'
 import Cart from './MobileCart'
 import { GrCodeSandbox } from 'react-icons/gr'
-import SearchBar from '@/components/SearchBar'
 
 import { cookies } from 'next/headers'
 import { getCart } from '@/lib/shopify'
@@ -26,13 +25,14 @@ export default async function Header() {
       </div>
       <Link
         href="/"
-        className="transition-all duration-300 ease-out hover:text-accent"
+        className="flex items-center gap-x-4 text-2xl font-semibold transition-all duration-300 ease-out hover:text-accent"
       >
         <GrCodeSandbox size={35} />
+        {process.env.SITE_NAME}
       </Link>
-      <div className="w-96">
+      {/* <div className="w-96">
         <SearchBar className="relative hidden items-center md:flex" />
-      </div>
+      </div> */}
       <nav className="hidden md:block">
         <ul className="flex items-center gap-8">
           {menu.length &&

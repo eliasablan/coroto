@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { createUrl } from '@/lib/utils'
+import { cn, createUrl } from '@/lib/utils'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 
-export default function SearchBar({ className }: { className: string }) {
+export default function SearchBar({ className }: { className?: string }) {
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -27,7 +27,7 @@ export default function SearchBar({ className }: { className: string }) {
   }
   return (
     <form onSubmit={onSubmit}>
-      <div className={className}>
+      <div className={cn('relative flex items-center', className)}>
         <Search className="absolute left-2.5 h-4 w-4 text-foreground" />
         <Input
           key={searchParams?.get('q')}
@@ -35,7 +35,7 @@ export default function SearchBar({ className }: { className: string }) {
           name="search"
           placeholder="Search..."
           defaultValue={searchParams?.get('q') || ''}
-          className="w-full rounded bg-background pl-9 placeholder:text-foreground"
+          className="w-full pl-9 placeholder:text-foreground"
         />
       </div>
     </form>
