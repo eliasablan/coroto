@@ -4,8 +4,8 @@ import React, { Suspense } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { cn, createUrl } from '@/lib/utils'
-import FilterItemDropdown from './layout/search/filter/dropdown'
-import { sorting } from '@/lib/constants'
+// import FilterItemDropdown from './layout/search/filter/dropdown'
+// import { sorting } from '@/lib/constants'
 
 type PathFilterItem = { title: string; path: string }
 
