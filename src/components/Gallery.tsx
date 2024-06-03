@@ -4,12 +4,13 @@ import React from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import EmblaCarousel from '@/components/EmblaCarousel'
 
-const OPTIONS: EmblaOptionsType = {}
-
 type GalleryProps = {
   images: { src: string; altText: string }[]
 }
 
 export function Gallery({ images }: GalleryProps) {
-  return <EmblaCarousel images={images} options={OPTIONS} />
+  const options: EmblaOptionsType = {
+    loop: true,
+  }
+  return <EmblaCarousel images={images} options={options} />
 }

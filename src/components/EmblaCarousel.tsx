@@ -47,7 +47,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 src={image.src as string}
                 priority={true}
               />
-              <div className="embla__slide__number">{index + 1}</div>
+              {/* <div className="embla__slide__number">{index + 1}</div> */}
             </div>
           ))}
         </div>
