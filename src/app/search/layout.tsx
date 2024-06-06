@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { getCollections } from '@/lib/shopify'
 import ScrollButton from '@/components/ScrollButton'
 import SearchBar from '@/components/SearchBar'
