@@ -30,10 +30,6 @@ export default function ScrollButton() {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            // className="fixed bottom-8 left-1/2 -translate-x-5 transition-transform hover:scale-105"
-            // className={`fixed bottom-8 left-1/2 -translate-x-5 transition-transform hover:scale-105 ${
-            //   isVisible ? 'translate-y-0' : 'translate-y-full' // Slide-in animation
-            // }`}
             className={cn(
               'fixed bottom-8 right-8 transition-transform hover:scale-105 sm:left-1/2 sm:right-0 sm:-translate-x-5',
               isVisible ? 'translate-y-0' : 'translate-y-20' // Slide-in animation
