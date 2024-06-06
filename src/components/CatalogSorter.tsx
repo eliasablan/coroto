@@ -1,8 +1,9 @@
 'use client'
 
-import React, { Suspense } from 'react'
+import React from 'react'
 import { sorting } from '@/lib/constants'
 import { SortFilterItem } from '@/lib/constants'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import {
   Select,
   SelectContent,
@@ -10,31 +11,34 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Skeleton } from '@/components/ui/skeleton'
 
+// NEED-TO-FIX: Cuando modoficamos la coleccion seleccionada, no se actualiza el sorter
 export default function CatalogSorter() {
-  const searchParams = new URLSearchParams(window.location.search)
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   return (
-    <Suspense fallback={<Skeleton className="h-10 w-full rounded-full" />}>
-      <Select
-        defaultValue={searchParams?.get('sort') || ''}
-        onValueChange={(value: string) => {
-          searchParams.set('sort', value)
-          window.location.search = searchParams.toString()
-        }}
-      >
-        <SelectTrigger className="w-full">
-          <SelectValue placeholder="Sort by" />
-        </SelectTrigger>
-        <SelectContent align="end">
-          {sorting.map((item: SortFilterItem, i) => (
-            <SelectItem key={i} value={item.slug!}>
-              {item.title}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </Suspense>
+    <Select
+      defaultValue={searchParams.get('sort') || ''}
+      onValueChange={(value: string) => {
+        if (!value) {
+          router.replace(pathname)
+        } else {
+          router.replace(`${pathname}?sort=${value}`)
+        }
+      }}
+    >
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder="Sort by" />
+      </SelectTrigger>
+      <SelectContent align="end">
+        {sorting.map((item: SortFilterItem, i) => (
+          <SelectItem key={i} value={item.slug!}>
+            {item.title}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   )
 }

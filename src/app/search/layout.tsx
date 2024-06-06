@@ -27,7 +27,11 @@ export default async function SearchLayout({
         </Suspense>
       </div>
       <CollectionFilter collections={collections} />
-      <CatalogSorter />
+      <Suspense
+        fallback={<Skeleton className="h-10 w-full rounded-full" />}
+      >
+        <CatalogSorter />
+      </Suspense>
       {children}
       <ScrollButton />
     </div>
