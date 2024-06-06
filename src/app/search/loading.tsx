@@ -7,7 +7,7 @@ export default function Loading() {
           return (
             <li
               key={index}
-              className="aspect-square animate-pulse bg-muted transition-opacity"
+              className="aspect-square animate-pulse rounded-lg bg-muted transition-opacity"
             />
           )
         })}
