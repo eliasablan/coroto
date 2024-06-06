@@ -27,7 +27,7 @@ export default function MobileCart({
           >
             <GrCart size={logoSize} />
             {cart?.totalQuantity ? (
-              <span className="absolute right-0 top-0 -mr-2 -mt-2 aspect-square w-5 scale-90 rounded-full bg-primary pt-[3px] font-mono text-sm leading-none text-primary-foreground md:scale-75">
+              <span className="absolute right-0 top-0 -mr-2 -mt-2 aspect-square w-5 scale-75 rounded-full bg-primary pt-[3px] font-mono text-sm leading-none text-primary-foreground">
                 {cart.totalQuantity}
               </span>
             ) : null}
