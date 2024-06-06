@@ -3,16 +3,29 @@
 import React from 'react'
 import { Button } from './ui/button'
 import { ArrowUp } from 'lucide-react'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 
 export default function ScrollButton() {
   return (
-    <Button
-      className="fixed bottom-8 right-8 transition-transform hover:scale-105"
-      size="icon"
-      onClick={() => scrollToTop()}
-    >
-      <ArrowUp />
-    </Button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            className="fixed bottom-8 left-1/2 -translate-x-5 transition-transform hover:scale-105"
+            size="icon"
+            onClick={() => scrollToTop()}
+          >
+            <ArrowUp />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>Scroll to top</TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   )
 }
 
