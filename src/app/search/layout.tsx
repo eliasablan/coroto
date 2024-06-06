@@ -13,26 +13,14 @@ export default async function SearchLayout({
   const collections = await getCollections()
 
   return (
-    <>
-      <div className="container sticky top-[51px] z-50 bg-background py-4">
+    <div className="container grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="sticky top-[51px] z-50 col-span-1 bg-background py-4 md:col-span-2">
         <SearchBar className="sticky top-[83px] z-50 flex items-center" />
       </div>
-
-      <div className="container sticky mx-auto flex flex-col gap-8 py-4 md:flex-row">
-        <div className="sticky top-[67px] order-first w-full flex-none md:max-w-[125px]">
-          <CollectionFilter collections={collections} />
-        </div>
-
-        <div className="order-last min-h-screen w-full md:order-none">
-          <Suspense fallback={null}>{children}</Suspense>
-        </div>
-
-        <div className="order-none flex-none md:order-last md:w-[125px]">
-          <CatalogSorter />
-        </div>
-      </div>
-
+      <CollectionFilter collections={collections} />
+      <CatalogSorter />
+      {children}
       <ScrollButton />
-    </>
+    </div>
   )
 }

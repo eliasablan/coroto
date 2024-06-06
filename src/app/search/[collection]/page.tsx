@@ -40,7 +40,7 @@ export default async function CategoryPage({
   })
 
   return (
-    <section>
+    <section className="col-span-1 mt-4 md:col-span-2">
       {products.length === 0 ? (
         <p className="py-3 text-lg">{`No products found in this collection`}</p>
       ) : (
