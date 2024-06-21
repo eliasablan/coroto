@@ -11,7 +11,7 @@ export default async function ThreeItemsGrid({
   const [firstProduct, secondProduct, thirdProduct] = products
 
   return (
-    <section className="grid gap-4 pb-4 lg:grid-cols-6 lg:grid-rows-2">
+    <section className="grid gap-1 pb-4 lg:grid-cols-6 lg:grid-rows-2">
       <div className="md:col-span-4 md:row-span-2">
         <ProductCard
           src={firstProduct.featuredImage?.url}

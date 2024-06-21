@@ -28,10 +28,10 @@ export default function ProductCard({
     >
       <Card className="flex aspect-auto h-full flex-col justify-between">
         <CardContent className="flex h-full items-center justify-center p-4">
-          <div className="relative aspect-square h-auto w-full overflow-hidden">
+          <div className="relative aspect-square h-full w-full overflow-hidden">
             {/* eslint-disable-next-line jsx-a11y/alt-text -- `alt` is inherited from `props`, which is being enforced with TypeScript */}
             <Image
-              className="h-auto bg-background object-contain transition-all ease-in group-hover:scale-105"
+              className="h-auto bg-background object-cover transition-all ease-in group-hover:scale-105"
               fill
               {...props}
             />
