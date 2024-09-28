@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages:build": "npx @cloudflare/next-on-pages"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
@@ -32,6 +33,7 @@
     "use-debounce": "^10.0.1"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
