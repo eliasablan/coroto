@@ -5,6 +5,8 @@ import { getCollection, getCollectionProducts } from '@/lib/shopify'
 import { defaultSort, sorting } from '@/lib/constants'
 import CatalogGrid from '@/components/CatalogGrid'
 
+export const runtime = 'edge'
+
 export async function generateMetadata({
   params,
 }: {

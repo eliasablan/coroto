@@ -9,6 +9,8 @@ export const metadata = {
   },
 }
 
+export const runtime = 'edge'
+
 export default async function Home() {
   // Collections that start with `hidden-*` are hidden from the search page.
   const gridItems = await getCollectionProducts({

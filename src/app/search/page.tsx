@@ -7,6 +7,8 @@ export const metadata = {
   description: 'Search your coroto (or product) in Coroto Store.',
 }
 
+export const runtime = 'edge'
+
 export default async function SearchPage({
   searchParams,
 }: {
