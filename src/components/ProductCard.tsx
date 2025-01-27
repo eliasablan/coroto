@@ -24,11 +24,11 @@ export default function ProductCard({
   return (
     <Link
       href={`/product/${product.handle}`}
-      className={cn('group relative h-auto w-full', className)}
+      className={cn('group', className)}
     >
-      <Card className="flex aspect-auto h-full flex-col justify-between">
-        <CardContent className="flex h-full items-center justify-center p-4">
-          <div className="relative aspect-square h-full w-full overflow-hidden">
+      <Card className="flex h-full flex-col justify-between">
+        <CardContent className="h-full p-4">
+          <div className="relative aspect-square w-full overflow-hidden">
             {/* eslint-disable-next-line jsx-a11y/alt-text -- `alt` is inherited from `props`, which is being enforced with TypeScript */}
             <Image
               className="h-auto bg-background object-cover transition-all ease-in group-hover:scale-105"
@@ -37,7 +37,7 @@ export default function ProductCard({
             />
           </div>
         </CardContent>
-        <CardFooter className="flex h-14 justify-between gap-x-1 p-4 pt-0">
+        <CardFooter className="flex justify-between gap-x-1 p-4 pt-0">
           {tooltip ? (
             <TooltipProvider>
               <Tooltip>

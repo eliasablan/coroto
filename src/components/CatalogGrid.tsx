@@ -9,15 +9,15 @@ export default function CatalogGrid({
 }) {
   if (products.length === 0) return null
   return (
-    <ul className="grid aspect-square grid-flow-row grid-cols-1 gap-1 transition-opacity sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid grid-flow-row grid-cols-1 gap-1 transition-opacity sm:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => (
         <li
           key={product.handle}
-          className="aspect-square animate-fadeIn transition-opacity"
+          className="animate-fadeIn transition-opacity"
         >
           <ProductCard
             tooltip={true}
-            className="inline-block"
+            // className="w-full"
             product={product}
             src={product.featuredImage?.url}
             alt={product.title}
