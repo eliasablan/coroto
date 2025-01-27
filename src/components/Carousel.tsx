@@ -13,7 +13,7 @@ import ProductCard from '@/components/ProductCard'
 import { Product } from '@/lib/shopify/types'
 import { cn } from '@/lib/utils'
 
-export async function ProductsCarousel({
+export function ProductsCarousel({
   products,
   className,
 }: {
