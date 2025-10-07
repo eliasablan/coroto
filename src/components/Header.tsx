@@ -10,11 +10,7 @@ import { cookies } from 'next/headers'
 import { getCart } from '@/lib/shopify'
 
 export default async function Header() {
-  const menu = await getMenu('main-menu')
-  const menu2 = await getMenu('main-menu-1')
-  if (menu.length === 0) {
-    menu.push(...menu2)
-  }
+  const menu = await getMenu('header-menu')
   const cartId = cookies().get('cartId')?.value
   let cart
 
