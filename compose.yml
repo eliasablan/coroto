@@ -1,0 +1,12 @@
+services:
+  corotos:
+    image: ghcr.io/eliasablan/coroto-nextjs-frontend:latest
+    build:
+      context: .
+      platforms:
+        - linux/amd64
+      dockerfile: Dockerfile
+      args:
+        SITE_NAME: ${SITE_NAME}
+    ports:
+      - 3000:3000
