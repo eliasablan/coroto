@@ -32,7 +32,7 @@ export function ProductsCarousel({
       }}
       plugins={[plugin.current]}
       onMouseOver={plugin.current.stop}
-      onMouseLeave={plugin.current.play}
+      onMouseLeave={() => plugin.current.play()}
       className={cn('w-full', className)}
     >
       <CarouselContent className="-ml-1">
