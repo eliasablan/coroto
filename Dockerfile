@@ -1,19 +1,22 @@
 # Builder Stage
 FROM node:20-alpine AS builder
 
+# 1. Install pnpm
+RUN npm i -g pnpm
+
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json pnpm-lock.yaml ./
 
-RUN npm ci
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 COPY . .
 
-RUN npm run build
+RUN pnpm build
 
 # Production Stage 
 
-FROM node:18-alpine AS production
+FROM node:20-alpine AS production
 
 WORKDIR /app
 
