@@ -14,8 +14,8 @@ export default async function SearchLayout({
   const collections = await getCollections()
 
   return (
-    <div className="container grid grid-cols-1 gap-1 md:grid-cols-2">
-      <div className="sticky top-[51px] z-50 col-span-1 bg-background py-4 md:col-span-2">
+    <div className="">
+      <div className="container sticky top-[51px] z-50 col-span-1 w-full bg-background py-2 md:col-span-2">
         <Suspense
           fallback={
             <div className="sticky top-[83px] z-50 flex items-center">
@@ -26,13 +26,15 @@ export default async function SearchLayout({
           <SearchBar className="sticky top-[83px] z-50 flex items-center" />
         </Suspense>
       </div>
-      <CollectionFilter collections={collections} />
-      <Suspense
-        fallback={<Skeleton className="h-10 w-full rounded-full" />}
-      >
-        <CatalogSorter />
-      </Suspense>
-      {children}
+      <div className="container grid grid-cols-1 gap-2 md:grid-cols-2">
+        <CollectionFilter collections={collections} />
+        <Suspense
+          fallback={<Skeleton className="h-10 w-full rounded-full" />}
+        >
+          <CatalogSorter />
+        </Suspense>
+        {children}
+      </div>
       <ScrollButton />
     </div>
   )

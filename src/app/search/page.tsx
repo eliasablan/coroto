@@ -28,7 +28,7 @@ export default async function SearchPage({
   const resultsText = products.length > 1 ? 'results' : 'result'
 
   return (
-    <section className="col-span-1 mt-4 md:col-span-2">
+    <section className="col-span-1 md:col-span-2">
       {searchValue ? (
         <p className="mb-4">
           {products.length === 0
